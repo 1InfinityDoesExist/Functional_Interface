@@ -26,5 +26,8 @@ public class Consumer3 {
 				System.out.println(t + " ");
 			}
 		});
+
+		Consumer<String> con = (consumer) -> System.out.println(consumer);
+		con.accept("Think of your sin!!!!");
 	}
 }

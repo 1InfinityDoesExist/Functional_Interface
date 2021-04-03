@@ -22,5 +22,10 @@ public class Predator {
 		System.out.println(predicate.test("Avinash Patel"));
 		Predicate<Integer> ageCheck = Example::is18Plus;
 		System.out.println(ageCheck.test(2));
+
+		Predicate<String> str = (s) -> {
+			return s.length() > 10;
+		};
+		System.out.println(str.test("Patel 1518 GAIAN"));
 	}
 }

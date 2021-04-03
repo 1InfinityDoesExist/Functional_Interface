@@ -46,6 +46,15 @@ public class Function1 {
 			ages.add(function.apply(emp));
 		}
 		ages.stream().forEach(System.out::println);
+
+		// Employee Input : String Output
+		Function<Employee, String> fun = new Function<Employee, String>() {
+			@Override
+			public String apply(Employee emp) {
+				return emp.getName();
+			}
+		};
+		System.out.println(fun.apply(new Employee("Tom Jones", 45)));
 	}
 
 }

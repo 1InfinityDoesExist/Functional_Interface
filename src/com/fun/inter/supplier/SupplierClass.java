@@ -11,8 +11,6 @@ public class SupplierClass {
 				return "I am with you . I am within you.!!!!!";
 			}
 		};
-
 		System.out.println(supplier.get());
 	}
-
 }

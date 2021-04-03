@@ -1,5 +1,6 @@
 package com.fun.inter.function;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -55,6 +56,9 @@ public class Function1 {
 			}
 		};
 		System.out.println(fun.apply(new Employee("Tom Jones", 45)));
+
+		Function<String, BigInteger> f = BigInteger::new;
+		System.out.println(f.apply("1234567890"));
 	}
 
 }

@@ -12,8 +12,9 @@ public class UnaryOperatorClass {
 				return arg0.toUpperCase();
 			}
 		};
-
 		System.out.println(un.apply("avinash patel"));
+		UnaryOperator<String> unOperator = "Hello"::concat;
+		System.out.println(unOperator.apply(" World!!!!!"));
 	}
 
 }

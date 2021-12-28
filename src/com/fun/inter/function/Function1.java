@@ -1,7 +1,5 @@
 package com.fun.inter.function;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
@@ -33,32 +31,46 @@ class Employee {
 	}
 }
 
+/**
+ * A Function interface is more of a generic one that takes one argument and
+ * produces a result. This has a Single Abstract Method (SAM) apply which
+ * accepts an argument of a type T and produces a result of type R. One of the
+ * common use cases of this interface is Stream.map method.
+ * 
+ * @author mossad
+ *
+ */
 public class Function1 {
-	public static void main(String[] args) {
-		List<Employee> employeeList = Arrays.asList(new Employee("Tom Jones", 45), new Employee("Harry Major", 25),
+
+	private static final List<Employee> employeeList;
+
+	static {
+		employeeList = Arrays.asList(new Employee("Tom Jones", 45), new Employee("Harry Major", 25),
 				new Employee("Ethan Hardy", 65), new Employee("Nancy Smith", 15),
 				new Employee("Deborah Sprightly", 29));
-		Function<Employee, Integer> function = (emp) -> {
-			return emp.getAge();
+	}
+
+	public static void main(String[] args) {
+
+		Function<String, Integer> nameMappingFunction1 = String::length;
+		System.out.println(nameMappingFunction1.apply("Avinash Patel"));
+
+		// OR
+		Function<String, Integer> nameMappingFunction2 = (name) -> {
+			return name.length();
 		};
 
-		List<Integer> ages = new ArrayList<Integer>();
-		for (Employee emp : employeeList) {
-			ages.add(function.apply(emp));
-		}
-		ages.stream().forEach(System.out::println);
+		// OR
 
-		// Employee Input : String Output
-		Function<Employee, String> fun = new Function<Employee, String>() {
+		Function<Employee, Integer> nameMappingFunction3 = new Function<Employee, Integer>() {
+
 			@Override
-			public String apply(Employee emp) {
-				return emp.getName();
+			public Integer apply(Employee emp) {
+				return emp.getName().length();
 			}
 		};
-		System.out.println(fun.apply(new Employee("Tom Jones", 45)));
 
-		Function<String, BigInteger> f = BigInteger::new;
-		System.out.println(f.apply("1234567890"));
+		employeeList.stream().map(nameMappingFunction3).forEach(System.out::println);
 	}
 
 }
